@@ -11,4 +11,18 @@ $app->addErrorMiddleware(true, true, true);
 $app->get('/', function ($request, $response) {
     return $response->write('Welcome to Slim!');
 });
+
+$app->get('/users', function ($request, $response) {
+  return $response->write('GET /users');
+});
+
+$app->post('/users', function ($request, $response) {
+  return $response->withStatus(302);
+});
+
+$app->get('/courses/{id}', function ($request, $response, array $args) {
+  $courseId = $args['id'];
+  return $response->write("Course id: {$courseId}");
+});
+
 $app->run();
