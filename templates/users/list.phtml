@@ -1,0 +1,12 @@
+<div>
+  <form action="/users" method="get">
+    <input type="text" name="search" placeholder="Search...">
+    <button type="submit">SEARCH!!!</button>
+  </form>
+</div>
+<hr>
+<ul>
+  <?php foreach ($users as $user): ?>
+    <li><i><?= htmlspecialchars($user)?></i></li>
+  <?php endforeach; ?>
+</ul>
