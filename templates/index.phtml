@@ -1,0 +1,34 @@
+<h1>Main Page</h1>
+<hr>
+<ul>
+  <li><a href="/courses" title="Courses">Courses</a></li>
+  <li><a href="/users" title="Courses">Users</a></li>
+</ul>
+
+
+<?php if ($user['isAuthorize']): ?>
+  <form action="/session" method="post">
+    <div>
+      <i>Sign in</i>
+    </div>
+    <div>
+      <label for="">
+        Login
+        <input type="text" name="user[login]" value="<?= htmlspecialchars($user['login'] ?? '')?>">
+      </label>
+      <label for="">
+        Password
+        <input type="password" name="user[password]">
+      </label>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+<?php else: ?>
+  <div>
+    <b>Name: </b><?= htmlspecialchars($user['name']) ?>
+  </div>
+  <form action="/session" method="post">
+    <input type="hidden" name="_METHOD" value="DELETE">
+    <button type="submit">Log out</button>
+  </form>
+<?php endif; ?>
